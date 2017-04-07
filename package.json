@@ -13,6 +13,11 @@
     "ejs": "*",
     "morgan": "~1.7.0",
     "serve-favicon": "~2.3.2",
-    "mongojs":"*"
+    "mongojs":"*",
+    "passport-local": "*",
+    "express-session": "*",
+    "connect-redis": "*",
+    "md5": "*",
+    "node-session": "*"
   }
 }
