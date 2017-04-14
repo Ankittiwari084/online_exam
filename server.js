@@ -1,12 +1,27 @@
 var express = require("express");
 var path = require("path");
 var bodyParser = require("body-parser");
+var mongojs = require("mongojs");
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
+ var flash = require('express-flash') 
+
 var admin = require("./route/admin");
+
 
 //set app object 
 
 var app = express();
 
+
+// set up login needed middleware.
+
+app.use(cookieParser());
+app.use(session({secret: "dhsdfertefbfawdeqwrngfdfgueiwtewfgndsg",cookie: { maxAge: 60000 }}));
+
+
+// set middleware of flash message.;
+  app.use(flash());
 
 //set middleware for body parser.
 app.use(bodyParser.json());
