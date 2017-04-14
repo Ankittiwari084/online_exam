@@ -1,6 +1,7 @@
 var express = require("express");
 var mongojs = require("mongojs");
-var db = mongojs("ceevision",["admin"]);
+var db = mongojs("root:root@ds161580.mlab.com:61580/online_exam?authMechanism=SCRAM-SHA-1",["admin"]);
+//var db = mongojs("ceevision",["admin"]);
 
 
 
@@ -18,6 +19,8 @@ function checkauth(req,res,email,password)
 			]
 		},function(err,data){
 			if(err){
+				console.log("erorrrrrrrrrrrrrrr ========");
+				console.log(err);
 				res.send("Error");
 			}
 			if(data && data != "[]")
@@ -29,6 +32,7 @@ function checkauth(req,res,email,password)
 					]
 				},function(err,data){
 					 req.session.user = data;
+					 
 					res.redirect('/admin/dashboard');
 				})
 				//res.redirect('/admin/dashboard');
