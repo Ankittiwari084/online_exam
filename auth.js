@@ -2,13 +2,16 @@ var express = require("express");
 var mongojs = require("mongojs");
 var db = mongojs("ceevision",["admin"]);
 
-var cookieParser = require('cookie-parser');
-var session = require('express-session');
+
 
 
 module.exports = {
-	checkauth: function(res,email,password)
-	{
+	checkauth:checkauth,
+	
+};
+
+function checkauth(req,res,email,password)
+{
 		db.admin.count({
 			$and: [
 				{'email':email},{'password':password}
@@ -18,19 +21,21 @@ module.exports = {
 				res.send("Error");
 			}
 			if(data && data != "[]")
-			{	
+					
+			{		
 				db.admin.find({
 					$and: [
 						{'email':email},{'password':password}
 					]
 				},function(err,data){
-					res.session.logindata = data;
+					 req.session.user = data;
+					res.redirect('/admin/dashboard');
 				})
-				res.redirect('/admin/dashboard');
+				//res.redirect('/admin/dashboard');
 			}else{
 				console.log('No user found');
 					res.redirect('/admin/login');
 			}
 		})
-	}
 }
+

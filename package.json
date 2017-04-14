@@ -18,6 +18,7 @@
     "express-session": "*",
     "connect-redis": "*",
     "md5": "*",
-    "node-session": "*"
+    "node-session": "*",
+    "express-flash": "*"
   }
 }

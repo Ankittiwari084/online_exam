@@ -11,22 +11,14 @@
                   <div class="login-panel panel panel-default">
          
                     <div class="panel-heading">
-                        <h3 class="panel-title">Please Sign In</h3>
+                        <h3 class="panel-title">Please <a href="/admin/logout" >logout</a></h3>
                     </div>
                     <div class="panel-body">
-                         <form method="post" accept-charset="utf-8" action="/admin/loginpost"><div style="display:none;"><input type="hidden" name="_method" value="POST"/></div>                            <fieldset>
-                                <div class="form-group">
-                                     <div class="input email"><label for="email">Email</label><input type="email" name="email" palceholder="E-mail" class="form-control" autofocus="autofocus" id="email"/></div>                                </div>
-                                <div class="form-group">
-                                     <div class="input password"><label for="password">Password</label><input type="password" name="password" palceholder="Password" class="form-control" id="password"/></div>                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                    <div class="input checkbox"><input type="hidden" name="remember" value="0"/><input type="checkbox" name="remember" value="1" id="remember"></div> Remember Me
-                                    </label>
-                                </div>
-                                <!-- Change this to a button or input when using this as a form -->
-                                  <div class="submit"><input type="submit" value="Login" class="btn btn-lg btn-success btn-block" id="login"/></div>                            </fieldset>
-                        </form>                    </div>
+                        
+                      <% userdata.forEach(function(user) { %>
+        <li><%= user.email %> - <%= user.firstname %></li>
+    <% }); %>
+                    </div>
                 </div>
       </div>
       </div>
