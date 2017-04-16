@@ -19,6 +19,8 @@
     "connect-redis": "*",
     "md5": "*",
     "node-session": "*",
-    "express-flash": "*"
+    "express-flash": "*",
+    "mongoose": "*",
+    "assert":"*"
   }
 }
