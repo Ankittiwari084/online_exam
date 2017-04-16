@@ -1,10 +1,11 @@
 var express = require("express");
 var path = require("path");
 var bodyParser = require("body-parser");
-var mongojs = require("mongojs");
+
+var mongoojs = require('mongoose');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
- var flash = require('express-flash') 
+var flash = require('express-flash'); 
 
 var admin = require("./route/admin");
 
@@ -23,6 +24,10 @@ app.use(session({secret: "dhsdfertefbfawdeqwrngfdfgueiwtewfgndsg",cookie: { maxA
 // set middleware of flash message.;
   app.use(flash());
 
+ app.use(function(req, res, next){
+  res.locals.messages = req.flash();
+  next();
+});
 //set middleware for body parser.
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -31,6 +36,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
 // set the view engine to ejs
 app.set('view engine', 'ejs');
+
 
 
 // set middleware.
